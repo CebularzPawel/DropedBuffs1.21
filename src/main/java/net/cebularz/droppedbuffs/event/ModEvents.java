@@ -9,6 +9,7 @@ import net.cebularz.droppedbuffs.entity.custom.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -40,8 +41,7 @@ public class ModEvents {
                 int chance = random.nextInt(100);
 
                 ItemStack mainHandItem = player.getMainHandItem();
-
-                int lootingLevel = 0;
+                int lootingLevel = EnchantmentHelper.getEnchantmentLevel(player.level().holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING), player);
                 int lootingboost = Config.looting_extra_chance;
                 if(player.hasEffect(MobEffects.LUCK)){
                     chance+=Config.luck_extra_chance;
