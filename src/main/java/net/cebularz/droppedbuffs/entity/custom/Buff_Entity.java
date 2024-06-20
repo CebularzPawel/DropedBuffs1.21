@@ -12,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 
 public class Buff_Entity extends Entity {
@@ -110,6 +111,7 @@ public class Buff_Entity extends Entity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
+
         if (pCompound.contains("ColorMultiplier")) {
             this.entityData.set(COLOR_MULTIPLIER, pCompound.getInt("ColorMultiplier"));
         }
@@ -117,11 +119,8 @@ public class Buff_Entity extends Entity {
 
     @Override
     protected void addAdditionalSaveData(CompoundTag pCompound) {
+
         pCompound.putInt("ColorMultiplier", this.getColorMultiplier());
     }
 
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
 }
