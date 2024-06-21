@@ -31,9 +31,9 @@ public class Buff_Entity extends Entity {
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        this.entityData.set(OWNER_ID, 0);
-        this.entityData.set(TEXTURE_INDEX, 0);
-        this.entityData.set(COLOR_MULTIPLIER, 0xFFFFFF);
+        builder.define(OWNER_ID, 0);
+        builder.define(TEXTURE_INDEX, 0);
+        builder.define(COLOR_MULTIPLIER, 0xFFFFFF);
     }
 
 
