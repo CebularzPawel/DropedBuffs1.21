@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.cebularz.droppedbuffs.ColorConverter;
+import net.cebularz.droppedbuffs.Config;
 import net.cebularz.droppedbuffs.DroppedBuffs;
 import net.cebularz.droppedbuffs.entity.client.Meat_Buff.Meat_Buff_Model;
 import net.cebularz.droppedbuffs.entity.client.ModModelLayers;
@@ -42,7 +43,7 @@ public class Strength_Buff_Renderer extends EntityRenderer<Strength_Buff_Entity>
         pPoseStack.mulPose(Axis.XP.rotationDegrees(pEntity.rotationX));
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pEntity.rotationY));
         pPoseStack.mulPose(Axis.ZP.rotationDegrees(pEntity.rotationZ));
-        float size = 1.5F;
+        float size = 1.5F* Config.buff_size;
         pPoseStack.scale( size, size,size);
 
         float alpha = pEntity.alpha;

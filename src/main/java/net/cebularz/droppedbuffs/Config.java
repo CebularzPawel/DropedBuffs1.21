@@ -39,6 +39,9 @@ public class Config
     private static final ForgeConfigSpec.IntValue BUFF_ON_GROUND_DURATION = BUILDER
             .comment("How long the buff should stay on the ground in seconds")
             .defineInRange("buff_on_ground_duration", 20,0,Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.FloatValue BUFF_SIZE = BUILDER
+            .comment("Size of the buff (it only change visual model, not the hitbox)")
+            .defineInRange("buff_size", 1,0,Float.MAX_VALUE);
     private static final ForgeConfigSpec.BooleanValue ABSORPTION_BUFF = BUILDER
             .comment("Absorption Buff active")
             .define("absorption_buff",true);
@@ -69,6 +72,9 @@ public class Config
     private static final ForgeConfigSpec.BooleanValue WATER_BREATHING_BUFF = BUILDER
             .comment("Water Breathing Buff active")
             .define("water_breathing_buff",true);
+    private static final ForgeConfigSpec.BooleanValue NIGHT_VISION_BUFF = BUILDER
+            .comment("Night Vision Buff active")
+            .define("night_vision_buff",true);
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static int log_buff_chance;
@@ -76,7 +82,7 @@ public class Config
     public static int luck_extra_chance;
 
     public static boolean global_drop;
-
+    public static float buff_size;
     public static int buff_on_ground_duration;
     public static List<Boolean> activelist;
 
@@ -90,7 +96,7 @@ public class Config
         buff_on_ground_duration = BUFF_ON_GROUND_DURATION.get();
         luck_extra_chance = LUCK_EXTRA_CHANCE.get();
 
-
+        buff_size= BUFF_SIZE.get();
         activelist = new ArrayList<>();
         activelist.add(ABSORPTION_BUFF.get());
         activelist.add(HASTE_BUFF.get());
@@ -102,5 +108,6 @@ public class Config
         activelist.add(SPEED_BUFF.get());
         activelist.add(STRENGTH_BUFF.get());
         activelist.add(WATER_BREATHING_BUFF.get());
+        activelist.add(NIGHT_VISION_BUFF.get());
     }
 }

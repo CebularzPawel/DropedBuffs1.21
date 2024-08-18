@@ -20,6 +20,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.WaterFluid;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -49,15 +50,19 @@ public class ModEvents {
 
                 int chance2 = Config.log_buff_chance;
                 if (chance < chance2 + lootingLevel * lootingboost) {
-                    int number = random.nextInt(10);
+                    int number = random.nextInt(11);
                     List<Boolean> Checklist = new ArrayList<>(Config.activelist);
                     if(!event.getEntity().level().getFluidState(event.getEntity().blockPosition()).is(Fluids.WATER)){
                         Checklist.set(9,false);
                     }
+                    int lightlevel = event.getEntity().level().getBrightness(LightLayer.BLOCK,event.getEntity().blockPosition())+event.getEntity().level().getBrightness(LightLayer.SKY,event.getEntity().blockPosition());
+                    if(lightlevel>5){
+                        Checklist.set(10,false);
+                    }
                     boolean havetrue = Checklist.contains(true);
 
                     while ((!Checklist.get(number)&&havetrue)) {
-                        number = random.nextInt(10);
+                        number = random.nextInt(11);
                     }
                     if(!havetrue){
                         number=-1;
@@ -121,6 +126,13 @@ public class ModEvents {
                     }
                     if (number == 9) {
                         Water_Breathing_Buff_Entity buffentity = new Water_Breathing_Buff_Entity(ModEntities.WATER_BREATHING_BUFF_ENTITY.get(), event.getEntity().level());
+                        buffentity.owner = player;
+                        buffentity.setPos(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
+                        event.getEntity().level().addFreshEntity(buffentity);
+
+                    }
+                    if (number == 10) {
+                        Night_Vision_Buff_Entity buffentity = new Night_Vision_Buff_Entity(ModEntities.NIGHT_VISION_BUFF_ENTITY.get(), event.getEntity().level());
                         buffentity.owner = player;
                         buffentity.setPos(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
                         event.getEntity().level().addFreshEntity(buffentity);
