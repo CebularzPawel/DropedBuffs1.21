@@ -16,7 +16,8 @@ public class Fire_Resistance_Buff_Entity extends Basic_Buff_Entity {
 
     @Override
     protected void effect(Player player) {
-        MobEffectInstance effect = new MobEffectInstance(MobEffects.FIRE_RESISTANCE,30*20,0);
+
+        MobEffectInstance effect = new MobEffectInstance(MobEffects.FIRE_RESISTANCE,effect_duration*20,0);
         player.addEffect(effect);
 
     }

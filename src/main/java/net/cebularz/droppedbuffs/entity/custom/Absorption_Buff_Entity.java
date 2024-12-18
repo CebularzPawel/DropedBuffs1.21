@@ -24,7 +24,7 @@ public class Absorption_Buff_Entity extends Basic_Buff_Entity {
 
     @Override
     protected void effect(Player player) {
-        MobEffectInstance effect = new MobEffectInstance(MobEffects.ABSORPTION,30*20,1);
+        MobEffectInstance effect = new MobEffectInstance(MobEffects.ABSORPTION,effect_duration*20,1);
         player.addEffect(effect);
     }
 }

@@ -24,7 +24,8 @@ public class Heal_Buff_Entity extends Basic_Buff_Entity {
 
     @Override
     protected void effect(Player player) {
-        player.heal(10);
+        int healing_value = Config.heal_value;
+        player.heal(healing_value);
 
     }
 }

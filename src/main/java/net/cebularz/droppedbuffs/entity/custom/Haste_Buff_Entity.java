@@ -23,7 +23,7 @@ public class Haste_Buff_Entity extends Basic_Buff_Entity {
 
     @Override
     protected void effect(Player player) {
-        MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED,30*20,0);
+        MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED,effect_duration*20,0);
         player.addEffect(effect);
     }
 }

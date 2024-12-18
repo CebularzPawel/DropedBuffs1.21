@@ -1,6 +1,7 @@
 package net.cebularz.droppedbuffs.entity.custom;
 
 import com.google.common.graph.Network;
+import net.cebularz.droppedbuffs.Config;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -16,6 +17,8 @@ import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 
 public class Buff_Entity extends Entity {
+
+
     private static final EntityDataAccessor<Integer> OWNER_ID = SynchedEntityData.defineId(Buff_Entity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TEXTURE_INDEX = SynchedEntityData.defineId(Buff_Entity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> COLOR_MULTIPLIER = SynchedEntityData.defineId(Buff_Entity.class, EntityDataSerializers.INT);

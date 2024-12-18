@@ -24,6 +24,8 @@ public class Meat_Buff_Entity extends Basic_Buff_Entity {
 
     @Override
     protected void effect(Player player) {
-        player.getFoodData().eat(8,6);
+        int food_level = Config.food_value;
+        int saturation_level = Config.saturation_value;
+        player.getFoodData().eat(food_level,saturation_level);
     }
 }

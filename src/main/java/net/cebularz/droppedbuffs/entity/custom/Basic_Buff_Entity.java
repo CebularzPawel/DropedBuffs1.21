@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Basic_Buff_Entity extends Entity {
     public Player owner;
-
+    public int effect_duration = Config.buff_effect_duration;
     public float bobOffset;
     public int age;
     public float rotationY;

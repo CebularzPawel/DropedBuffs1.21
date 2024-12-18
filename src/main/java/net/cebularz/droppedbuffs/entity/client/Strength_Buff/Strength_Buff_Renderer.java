@@ -29,6 +29,8 @@ public class Strength_Buff_Renderer extends EntityRenderer<Strength_Buff_Entity>
         this.model = new Strength_Buff_Model<>(context.bakeLayer(ModModelLayers.STRENGTH_BUFF_LAYER));
     }
 
+
+
     @Override
     public ResourceLocation getTextureLocation(Strength_Buff_Entity pEntity) {
         return TEXTURE;

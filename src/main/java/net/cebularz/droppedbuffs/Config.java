@@ -42,6 +42,9 @@ public class Config
     private static final ForgeConfigSpec.FloatValue BUFF_SIZE = BUILDER
             .comment("Size of the buff (it only change visual model, not the hitbox)")
             .defineInRange("buff_size", 1,0,Float.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue BUFF_EFFECT_DURATION = BUILDER
+            .comment("Duration (in seconds) of an effect got from a buff (applies only to buffs that gives effects with a duration)")
+            .defineInRange("buff_effect_duration", 30,0,Integer.MAX_VALUE);
     private static final ForgeConfigSpec.BooleanValue ABSORPTION_BUFF = BUILDER
             .comment("Absorption Buff active")
             .define("absorption_buff",true);
@@ -75,6 +78,16 @@ public class Config
     private static final ForgeConfigSpec.BooleanValue NIGHT_VISION_BUFF = BUILDER
             .comment("Night Vision Buff active")
             .define("night_vision_buff",true);
+    private static final ForgeConfigSpec.IntValue HEALING_VALUE = BUILDER
+            .comment("Amount of healing in hp you will get from healing buff")
+            .defineInRange("healing_value", 10,0,Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue FOOD_VALUE = BUILDER
+            .comment("Amount of hunger points restored from a meat buff")
+            .defineInRange("food_value", 8,0,Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue SATURATION_VALUE = BUILDER
+            .comment("Amount of saturation points restored from a meat buff")
+            .defineInRange("saturation_value", 6,0,Integer.MAX_VALUE);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static int log_buff_chance;
@@ -85,16 +98,28 @@ public class Config
     public static float buff_size;
     public static int buff_on_ground_duration;
     public static List<Boolean> activelist;
+    public static int buff_effect_duration;
 
+    public static int heal_value;
+
+    public static int food_value;
+    public static int saturation_value;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
+
 
         log_buff_chance = LOG_BUFF_CHANCE.get();
         looting_extra_chance = LOOTING_EXTRA_CHANCE.get();
         global_drop = GLOBAL_DROP.get();
         buff_on_ground_duration = BUFF_ON_GROUND_DURATION.get();
         luck_extra_chance = LUCK_EXTRA_CHANCE.get();
+
+        buff_effect_duration = BUFF_EFFECT_DURATION.get();
+
+        heal_value = HEALING_VALUE.get();
+        food_value = FOOD_VALUE.get();
+        saturation_value = SATURATION_VALUE.get();
 
         buff_size= BUFF_SIZE.get();
         activelist = new ArrayList<>();
