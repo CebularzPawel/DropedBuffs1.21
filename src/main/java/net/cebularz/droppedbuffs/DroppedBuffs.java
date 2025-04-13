@@ -1,6 +1,9 @@
 package net.cebularz.droppedbuffs;
 
 import com.mojang.logging.LogUtils;
+import net.cebularz.droppedbuffs.api.Buff;
+import net.cebularz.droppedbuffs.api.BuffRegistry;
+import net.cebularz.droppedbuffs.buffs.*;
 import net.cebularz.droppedbuffs.entity.ModEntities;
 import net.cebularz.droppedbuffs.entity.client.Absorption_Buff.Absorption_Buff_Renderer;
 import net.cebularz.droppedbuffs.entity.client.Buff.Buff_Renderer;
@@ -17,6 +20,7 @@ import net.cebularz.droppedbuffs.entity.client.Strength_Buff.Strength_Buff_Rende
 import net.cebularz.droppedbuffs.entity.client.Water_Breathing_Buff.Water_Breathing_Buff_Renderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -57,7 +61,7 @@ public class DroppedBuffs
 
         modEventBus.addListener(this::addCreative);
         ModEntities.register(modEventBus);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DroppedBuffsConfig.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -65,7 +69,41 @@ public class DroppedBuffs
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
+        Buff absorptionBuff = new AbsorptionBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "absorption"), absorptionBuff);
 
+        Buff fireResistBuff = new FireResistanceBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "fireresist"), fireResistBuff);
+
+        Buff hasteBuff = new HasteBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "haste"), hasteBuff);
+
+        Buff healBuff = new HealBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "heal"), healBuff);
+
+        Buff invisibilityBuff = new InvisibilityBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "invisibility"), invisibilityBuff);
+
+        Buff luckBuff = new LuckBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "luck"), luckBuff);
+
+        Buff meatBuff = new MeatBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "meat"), meatBuff);
+
+        Buff nightVisionBuff = new NightVisionBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "nightvision"), nightVisionBuff);
+
+        Buff resistBuff = new ResistanceBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "resist"), resistBuff);
+
+        Buff speedBuff = new SpeedBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "speed"), speedBuff);
+
+        Buff strengthBuff = new StrengthBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "strength"), strengthBuff);
+
+        Buff waterBreathingBuff = new WaterBreathingBuff();
+        BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "waterbreathing"), waterBreathingBuff);
 
 
     }

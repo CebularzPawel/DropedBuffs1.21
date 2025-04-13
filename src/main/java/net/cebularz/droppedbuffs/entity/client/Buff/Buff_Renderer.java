@@ -6,7 +6,7 @@ import com.mojang.math.Axis;
 import net.cebularz.droppedbuffs.ColorConverter;
 import net.cebularz.droppedbuffs.DroppedBuffs;
 import net.cebularz.droppedbuffs.entity.client.ModModelLayers;
-import net.cebularz.droppedbuffs.entity.custom.Buff_Entity;
+import net.cebularz.droppedbuffs.entity.entities.Buff_Entity;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

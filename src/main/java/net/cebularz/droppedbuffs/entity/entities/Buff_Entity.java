@@ -1,19 +1,13 @@
-package net.cebularz.droppedbuffs.entity.custom;
+package net.cebularz.droppedbuffs.entity.entities;
 
-import com.google.common.graph.Network;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeHooks;
-import org.jetbrains.annotations.NotNull;
 
 public class Buff_Entity extends Entity {
     private static final EntityDataAccessor<Integer> OWNER_ID = SynchedEntityData.defineId(Buff_Entity.class, EntityDataSerializers.INT);

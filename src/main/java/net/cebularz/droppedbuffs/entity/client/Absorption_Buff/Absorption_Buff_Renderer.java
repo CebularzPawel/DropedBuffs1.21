@@ -4,12 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.cebularz.droppedbuffs.ColorConverter;
-import net.cebularz.droppedbuffs.Config;
 import net.cebularz.droppedbuffs.DroppedBuffs;
+import net.cebularz.droppedbuffs.DroppedBuffsConfig;
 import net.cebularz.droppedbuffs.entity.client.Heal_Buff.Heal_Buff_Model;
 import net.cebularz.droppedbuffs.entity.client.ModModelLayers;
-import net.cebularz.droppedbuffs.entity.custom.Absorption_Buff_Entity;
-import net.cebularz.droppedbuffs.entity.custom.Heal_Buff_Entity;
+import net.cebularz.droppedbuffs.entity.entities.Absorption_Buff_Entity;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -41,7 +40,7 @@ public class Absorption_Buff_Renderer extends EntityRenderer<Absorption_Buff_Ent
         pPoseStack.mulPose(Axis.XP.rotationDegrees(pEntity.rotationX));
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pEntity.rotationY));
         pPoseStack.mulPose(Axis.ZP.rotationDegrees(pEntity.rotationZ));
-        float size = 1.5F* Config.buff_size;
+        float size = 1.5F* DroppedBuffsConfig.buff_size;
         pPoseStack.scale( size, size,size);
 
         float alpha = pEntity.alpha;
