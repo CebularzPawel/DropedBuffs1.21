@@ -105,7 +105,7 @@ public class DroppedBuffs
         Buff waterBreathingBuff = new WaterBreathingBuff();
         BuffRegistry.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "waterbreathing"), waterBreathingBuff);
 
-
+        //KOMENTARZ
     }
 
     // Add the example block item to the building blocks tab
