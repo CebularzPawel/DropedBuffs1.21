@@ -35,16 +35,17 @@ public class Basic_Buff_Entity extends Entity {
         super(pEntityType, pLevel);
         this.age = 0;
         this.owner = null;
-        Random random = new Random();
-        rotationX = random.nextFloat() * 360.0F;
-        rotationY = random.nextFloat() * 360.0F;
-        rotationZ = random.nextFloat() * 360.0F;
+
+        rotationX = 180.0F;
+        rotationY = 0.0F;
+        rotationZ = 0.0F;
 
         alpha = 1F;
         duration = DroppedBuffsConfig.buff_on_ground_duration * 20;
 
         color = 0xffffff; // Default color
     }
+
     public void setBuffId(ResourceLocation buffId) {
         this.buffId = buffId;
     }
@@ -72,14 +73,20 @@ public class Basic_Buff_Entity extends Entity {
         if (this.age >= duration) {
             this.discard();
         }
-        rotationX += 1.5F;
-        rotationY += 1.5F;
-        rotationZ += 1.5F;
 
-        rotationX %= 360.0F;
-        rotationY %= 360.0F;
-        rotationZ %= 360.0F;
+
+
+        rotationY = (rotationY + 2.0f) % 360;
+
+        float oscillationFactor = 0.5f;
+        float speedFactor = 0.1f;
+
+        rotationX = 180 + 30.0f * (float)Math.sin(this.tickCount * speedFactor * 0.7f) * oscillationFactor;
+        rotationZ = 30.0f * (float)Math.cos(this.tickCount * speedFactor) * oscillationFactor;
+
+
     }
+
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
